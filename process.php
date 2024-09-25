@@ -9,18 +9,23 @@ if($_SERVER["REQUEST_METHOD"]=="POST"){
 
     $collectionTimestamp = strtotime($datetime);
 
-    $collectionDay = date('w', $collectionTimestamp);
-    if($collectionDay == 0 || $collectionDay == 6) {
-        header('Location: error.php');
+    if (!$collectionTimestamp) {
+        echo 'Invalid input: please enter a valid date and time';
         exit;
     }
 
-    $startTime = strtotime('07:00:00');
-    $endTime = strtotime('12:00:00'); 
-    if($collectionTimestamp < $startTime || $collectionTimestamp > $endTime) {
-        header('Location: error.php');
+    $collectionDay = date('w', $collectionTimestamp);
+    if ($collectionDay == 0 || $collectionDay == 6) {
+        echo 'test';
         exit;
     }
+    
+    $startTime = strtotime('07:00:00', $collectionTimestamp);
+    $endTime = strtotime('12:00:00', $collectionTimestamp);
+    if($collectionTimestamp < $startTime || $collectionTimestamp > $endTime) {
+        echo 'Collection time must be between 7am and 12pm!';
+            exit;
+        }
 
     $to = 'grabmygarbageproj@gmail.com';
     $subject = "Grab my Garbage Request!";
