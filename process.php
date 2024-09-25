@@ -16,16 +16,16 @@ if($_SERVER["REQUEST_METHOD"]=="POST"){
 
     $collectionDay = date('w', $collectionTimestamp);
     if ($collectionDay == 0 || $collectionDay == 6) {
-        echo 'test';
+        header('Location: error.php');
         exit;
     }
     
     $startTime = strtotime('07:00:00', $collectionTimestamp);
     $endTime = strtotime('12:00:00', $collectionTimestamp);
     if($collectionTimestamp < $startTime || $collectionTimestamp > $endTime) {
-        echo 'Collection time must be between 7am and 12pm!';
+        header('Location: error.php');
             exit;
-        }
+    }
 
     $to = 'grabmygarbageproj@gmail.com';
     $subject = "Grab my Garbage Request!";
@@ -50,7 +50,8 @@ if($_SERVER["REQUEST_METHOD"]=="POST"){
         header('Location: index.php');
         exit;
     } else {
-        echo 'Email sending failed!';
+        header('Location: error.php');
+        exit;
     }
 }
 ?>
