@@ -8,15 +8,16 @@
 </head>
 <body>
     <div class="container">
+        <h1>Grab my Garbage Request System</h1>
         <form action="process.php" method="post">
 
-            <input type="text" class="form-control m-t-4" name="fullname" id="" placeholder="Full Name:">
+            <input type="text" class="form-control m-t-4" name="fullname" id="" placeholder="Full Name:" required>
             <br>
-            <input type="text" class="form-control m-t-4" name="address" id="" placeholder="Address:">
+            <input type="text" class="form-control m-t-4" name="address" id="" placeholder="Address:" required>
             <br>
-            <input type="text" class="form-control m-t-4" name="phonenumber" id="" placeholder="Phone Number:">
+            <input type="text" class="form-control m-t-4" name="phonenumber" id="" placeholder="Phone Number:" required>
             <br>
-            <input type="text" class="form-control m-t-4" name="garbagetype" id="" placeholder="Garbage Type:">
+            <input type="text" class="form-control m-t-4" name="garbagetype" id="" placeholder="Garbage Type:" required>
             <br>
 
             <input type="submit" class="btn btn-primary mt-4" value="Send" name="submit">
