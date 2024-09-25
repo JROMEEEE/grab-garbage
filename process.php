@@ -5,6 +5,22 @@ if($_SERVER["REQUEST_METHOD"]=="POST"){
     $address = $_POST["address"];
     $phone = $_POST["phonenumber"];
     $garbageType = $_POST["garbagetype"];
+    $datetime = $_POST["collectiondatetime"];
+
+    $collectionTimestamp = strtotime($datetime);
+
+    $collectionDay = date('w', $collectionTimestamp);
+    if($collectionDay == 0 || $collectionDay == 6) {
+        header('Location: error.php');
+        exit;
+    }
+
+    $startTime = strtotime('07:00:00');
+    $endTime = strtotime('12:00:00'); 
+    if($collectionTimestamp < $startTime || $collectionTimestamp > $endTime) {
+        header('Location: error.php');
+        exit;
+    }
 
     $to = 'grabmygarbageproj@gmail.com';
     $subject = "Grab my Garbage Request!";
@@ -12,7 +28,8 @@ if($_SERVER["REQUEST_METHOD"]=="POST"){
         "Name: $name",
         "Address: $address",
         "Phone Number: $phone",
-        "Garbage Type: $garbageType"
+        "Garbage Type: $garbageType",
+        "Collection Date and Time: $datetime"
     );
     $message = implode("\n", $messageLines);
 
