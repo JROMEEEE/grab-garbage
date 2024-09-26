@@ -10,8 +10,8 @@
     <link rel="stylesheet" type="text/css" href="styles.css">
 </head>
 <body>
-    <h1>Database Center</h1>
     <div class='container'>
+    <h1>Database Center</h1>
     <table>
         <thead>
             <tr>
@@ -21,6 +21,8 @@
                 <th>Phone Number</th>
                 <th>Garbage Type</th>
                 <th>Collection Date</th>
+                <th>Update</th>
+                <th>Delete</th>
             </tr>
         </thead>
         <tbody>
@@ -40,6 +42,8 @@
                         <td><?php echo $row['user_phonenumber']; ?></td>
                         <td><?php echo $row['garbage_type']; ?></td>
                         <td><?php echo $row['request_date']; ?></td>
+                        <td><a href="update_db.php?id=<?php echo $row['request_id']; ?>">Update</td>
+                        <td><a href="delete_db.php?id=<?php echo $row['request_id']; ?>">Delete</td>
                     </tr>
                     <?php
                 }
@@ -47,6 +51,19 @@
             ?>
         </tbody>
     </table>
+
+    <?php
+        if(isset($_GET['update_msg'])){
+            echo "<h6>".$_GET['update_msg']."</h6>";
+        }
+    ?>
+
+    <?php
+        if(isset($_GET['delete_msg'])){
+            echo "<h6>".$_GET['delete_msg']."</h6>";
+        }
+    ?>
+
     </div>
     <form action="index.html" method="get">
             <button type="submit">Redirect to Main Menu</button>

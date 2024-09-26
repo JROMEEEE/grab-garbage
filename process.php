@@ -22,39 +22,42 @@ if($_SERVER["REQUEST_METHOD"]=="POST"){
         exit;
     }
 
-    $to = 'grabmygarbageproj@gmail.com';
-    $subject = "Grab my Garbage Request!";
-    $messageLines = array(
-        "Name: $name",
-        "Address: $address",
-        "Phone Number: $phone",
-        "Garbage Type: $garbageType",
-        "Collection Date: $date"
-    );
-    $message = implode("\n", $messageLines);
+   
+    $query = "insert into `user_detail` (user_fullname, user_address, user_phonenumber, garbage_type, request_date) values ('$name', '$address', '$phone', '$garbageType', '$date')";
+    $result = mysqli_query($connection, $query);
 
-    $headers = array(
-        "From: grabmygarbageproj@gmail.com",
-        "Reply-To: grabmygarbageproj@gmail.com",
-        "MIME-Version: 1.0",
-        "Content-Type: text/plain; charset=UTF-8"
-    );
-    $headersString = implode("\r\n", $headers);
+    if(!$result){
+        die("Query failed: ".mysqli_error($connection));
+    } else {
+        $id = mysqli_insert_id($connection);
 
-    if(mail($to, $subject, $message, $headersString)){
+        $to = 'grabmygarbageproj@gmail.com';
+        $subject = "Grab my Garbage Request!";
+        $messageLines = array(
+            "Name: $name",
+            "Address: $address",
+            "Phone Number: $phone",
+            "Garbage Type: $garbageType",
+            "Collection Date: $date",
+            "Request ID: $id" // Add the ID to the email message
+        );
+        $message = implode("\n", $messageLines);
 
-        $query = "insert into `user_detail` (user_fullname, user_address, user_phonenumber, garbage_type, request_date) values ('$name', '$address', '$phone', '$garbageType', '$date')";
-        $result = mysqli_query($connection, $query);
+        $headers = array(
+            "From: grabmygarbageproj@gmail.com",
+            "Reply-To: grabmygarbageproj@gmail.com",
+            "MIME-Version: 1.0",
+            "Content-Type: text/plain; charset=UTF-8"
+        );
+        $headersString = implode("\r\n", $headers);
 
-        if(!$result){
-            die("Query failed: ".mysqli_error($connection));
-        } else{
+        if(mail($to, $subject, $message, $headersString)){
             header('Location: formrequest.html?insert_msg=Success!');
             exit;
+        } else {
+            header('Location: error.php');
+            exit;
         }
-    } else {
-        header('Location: error.php');
-        exit;
     }
 }
 ?>
