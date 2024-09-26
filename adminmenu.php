@@ -10,11 +10,7 @@
     <link rel="stylesheet" type="text/css" href="styles.css">
 </head>
 <body>
-    <div class="box1">
-        <h1>Database Menu</h1>
-        <button class="btn btn-primary mt-4">Remove Request</button>
-    </div>
-
+    <h1>Database Center</h1>
     <div class='container'>
     <table>
         <thead>
@@ -53,7 +49,7 @@
     </table>
     </div>
     <form action="index.html" method="get">
-            <button type="submit">Redirect to Menu</button>
+            <button type="submit">Redirect to Main Menu</button>
         </form>
 </body>
 </html>

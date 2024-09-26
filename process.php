@@ -1,4 +1,5 @@
 <?php
+include('dbconnect.php');
 
 $name = $_POST["fullname"];
 $address = $_POST["address"];
@@ -41,8 +42,16 @@ if($_SERVER["REQUEST_METHOD"]=="POST"){
     $headersString = implode("\r\n", $headers);
 
     if(mail($to, $subject, $message, $headersString)){
-        header('Location: formrequest.html');
-        exit;
+
+        $query = "insert into `user_detail` (user_fullname, user_address, user_phonenumber, garbage_type, request_date) values ('$name', '$address', '$phone', '$garbageType', '$date')";
+        $result = mysqli_query($connection, $query);
+
+        if(!$result){
+            die("Query failed: ".mysqli_error($connection));
+        } else{
+            header('Location: formrequest.html?insert_msg=Success!');
+            exit;
+        }
     } else {
         header('Location: error.php');
         exit;

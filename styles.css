@@ -1,5 +1,5 @@
 h1 {
-  margin: 0 0 20px 0; /* Add this line to give the h1 element a default margin */
+  margin: 0 0 20px 0;
 }
   
   .container {
@@ -10,7 +10,7 @@ h1 {
     background-color: #f9f9f9;
     border: 1px solid #ddd auto;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  }
+  }   
   
   .table-container {
     overflow-x: auto;
@@ -29,11 +29,4 @@ h1 {
   
   .text-center {
     text-align: center;
-  }
-
-  .box1 {
-    display: flex;              /* Enable flexbox layout */
-    justify-content: space-between;  /* Space between title and button */
-    align-items: center;        /* Vertically center content */
-    padding: 20px;              /* Add some padding */
   }
