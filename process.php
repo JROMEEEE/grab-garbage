@@ -12,13 +12,13 @@ if($_SERVER["REQUEST_METHOD"]=="POST"){
     $collectionTimestamp = strtotime($date);
 
     if (!$collectionTimestamp) {
-        header('Location: error.php');
+        header('Location: formrequest.php?error_msgform=Invalid Input! We are closed on Weekends.');
         exit;
     }
 
     $collectionDay = date('w', $collectionTimestamp);
     if ($collectionDay == 0 || $collectionDay == 6) {
-        header('Location: error.php');
+        header('Location: formrequest.php?error_msgform=Invalid Input! We are closed on Weekends.');
         exit;
     }
 
@@ -39,7 +39,7 @@ if($_SERVER["REQUEST_METHOD"]=="POST"){
             "Phone Number: $phone",
             "Garbage Type: $garbageType",
             "Collection Date: $date",
-            "Request ID: $id" // Add the ID to the email message
+            "Request ID: $id"
         );
         $message = implode("\n", $messageLines);
 
@@ -52,10 +52,10 @@ if($_SERVER["REQUEST_METHOD"]=="POST"){
         $headersString = implode("\r\n", $headers);
 
         if(mail($to, $subject, $message, $headersString)){
-            header('Location: formrequest.html?insert_msg=Success!');
+            header('Location: formrequest.php?update_msgform=Request Sent!');
             exit;
         } else {
-            header('Location: error.php');
+            header('Location: formrequest.php?error_msgform=Invalid Input! We are closed on Weekends.');
             exit;
         }
     }

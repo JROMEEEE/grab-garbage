@@ -26,6 +26,18 @@
             <input type="date" class="form-control m-t-4" name="collectiondate" id="" placeholder="Collection Date:" required>
             <br>
 
+            <?php
+                if(isset($_GET['update_msgform'])){
+                    echo "<h4>".$_GET['update_msgform']."</h4>";
+                }
+            ?>
+
+            <?php
+                if(isset($_GET['error_msgform'])){
+                    echo "<h4>".$_GET['error_msgform']."</h4>";
+                }
+            ?>
+
             <input type="submit" class="btn btn-primary mt-4" value="Send" name="submit">
         </form>
 

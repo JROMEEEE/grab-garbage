@@ -10,7 +10,7 @@
         if(!$result){
             die("Query failed: ".mysqli_error($connection))     ;
         } else {
-            header('Location: adminmenu.php?delete_msg=Success!');
+            header('Location: adminmenu.php?delete_msg=Request Deleted!');
         } 
     
     }

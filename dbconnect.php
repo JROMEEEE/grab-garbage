@@ -10,7 +10,7 @@ $connection = mysqli_connect(HOST, USERNAME, PASS, DB);
 if(!$connection){
     die("Connection failed: ".mysqli_connect_error());
 } else{
-    echo "Connected successfully";
+    echo "Database Connected!";
 }
 
 ?>
