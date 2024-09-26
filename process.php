@@ -10,7 +10,7 @@ if($_SERVER["REQUEST_METHOD"]=="POST"){
     $collectionTimestamp = strtotime($date);
 
     if (!$collectionTimestamp) {
-        echo 'Invalid input: please enter a valid date';
+        header('Location: error.php');
         exit;
     }
 
@@ -40,7 +40,7 @@ if($_SERVER["REQUEST_METHOD"]=="POST"){
     $headersString = implode("\r\n", $headers);
 
     if(mail($to, $subject, $message, $headersString)){
-        header('Location: index.php');
+        header('Location: index.html');
         exit;
     } else {
         header('Location: error.php');

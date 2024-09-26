@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="https://unpkg.com/mvp.css">
+    <link rel="stylesheet" type="text/css" href="styles.css">
 </head>
 <body>
 <div class="container">
@@ -21,16 +22,17 @@
             <input type="text" class="form-control m-t-4" name="garbagetype" id="" placeholder="Garbage Type:" required>
             <br>
             
-            <label for="">Collection Date and Time (7am-12pm) Closed on Weekends:</label>
+            <label for="">Collection Date and Time (Closed on Weekends):</label>
             <input type="date" class="form-control m-t-4" name="collectiondate" id="" placeholder="Collection Date:" required>
             <br>
 
             <input type="submit" class="btn btn-primary mt-4" value="Send" name="submit">
         </form>
 
-        <form action="index.php" method="get">
-                <button type="submit">Redirect to Menu</button>
-            </form>
+        <form action="index.html" method="get">
+            <button type="submit">Redirect to Menu</button>
+        </form>
+            
     </div>
 </body>
 </html>
