@@ -54,13 +54,13 @@
 
     <?php
         if(isset($_GET['update_msg'])){
-            echo "<h6>".$_GET['update_msg']."</h6>";
+            echo "<h4>".$_GET['update_msg']."</h4>";
         }
     ?>
 
     <?php
         if(isset($_GET['delete_msg'])){
-            echo "<h6>".$_GET['delete_msg']."</h6>";
+            echo "<h4>".$_GET['delete_msg']."</h4>";
         }
     ?>
 

@@ -61,6 +61,8 @@
 
         <form action="update_db.php?id_new=<?php echo $id; ?>" method="post">
 
+            <h3>Request ID: <?php echo $row['request_id']; ?></h3>
+
             <input type="text" class="form-control m-t-4" name="fullname" id="" placeholder="Full Name:" value="<?php echo $row['user_fullname'];?>" required>
             <br>
             <input type="text" class="form-control m-t-4" name="address" id="" placeholder="Address:" value="<?php echo $row['user_address']?>" required>
