@@ -1,11 +1,12 @@
 <?php
 
+$name = $_POST["fullname"];
+$address = $_POST["address"];
+$phone = $_POST["phonenumber"];
+$garbageType = $_POST["garbagetype"];
+$date = $_POST["collectiondate"];
+
 if($_SERVER["REQUEST_METHOD"]=="POST"){
-    $name = $_POST["fullname"];
-    $address = $_POST["address"];
-    $phone = $_POST["phonenumber"];
-    $garbageType = $_POST["garbagetype"];
-    $date = $_POST["collectiondate"];
 
     $collectionTimestamp = strtotime($date);
 
@@ -40,7 +41,7 @@ if($_SERVER["REQUEST_METHOD"]=="POST"){
     $headersString = implode("\r\n", $headers);
 
     if(mail($to, $subject, $message, $headersString)){
-        header('Location: index.html');
+        header('Location: formrequest.html');
         exit;
     } else {
         header('Location: error.php');
