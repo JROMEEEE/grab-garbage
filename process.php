@@ -12,13 +12,13 @@ if($_SERVER["REQUEST_METHOD"]=="POST"){
     $collectionTimestamp = strtotime($date);
 
     if (!$collectionTimestamp) {
-        header('Location: formrequest.php?error_msgform=Invalid Input! We are closed on Weekends.');
+        header('Location: formrequest.php?error_msgform=Invalid Input! We are unavailable on Weekends.');
         exit;
     }
 
     $collectionDay = date('w', $collectionTimestamp);
     if ($collectionDay == 0 || $collectionDay == 6) {
-        header('Location: formrequest.php?error_msgform=Invalid Input! We are closed on Weekends.');
+        header('Location: formrequest.php?error_msgform=Invalid Input! We are unavailable on Weekends.');
         exit;
     }
 
@@ -55,7 +55,7 @@ if($_SERVER["REQUEST_METHOD"]=="POST"){
             header('Location: formrequest.php?update_msgform=Request Sent!');
             exit;
         } else {
-            header('Location: formrequest.php?error_msgform=Invalid Input! We are closed on Weekends.');
+            header('Location: formrequest.php?error_msgform=Invalid Input! We are unavailable on Weekends.');
             exit;
         }
     }
